@@ -95,7 +95,7 @@ function showAlbums(albums) {
 
   if (albums.length !== 0) {
     for (const album of albums) {
-      showArtist(album);
+      showAlbum(album);
     }
   } else {
     document.querySelector("#artist-list").insertAdjacentHTML(
@@ -118,7 +118,7 @@ function showTracks(tracks) {
 
   if (tracks.length !== 0) {
     for (const track of tracks) {
-      showArtist(track);
+      showTrack(track);
     }
   } else {
     document.querySelector("#artist-list").insertAdjacentHTML(
@@ -130,7 +130,7 @@ function showTracks(tracks) {
   }
 }
 
-function showArtist(trackObject) {
+function showTrack(trackObject) {
   const html = `<li>${trackObject.name}</li>`;
 
   document.querySelector("#track-list").insertAdjacentHTML("beforeend", html);
