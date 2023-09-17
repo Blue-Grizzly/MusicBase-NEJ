@@ -37,11 +37,13 @@ async function submitSearchArtist(event) {
   const form = event.target;
 
   const search = form.searchArtistInput.value;
- 
+
+   console.log(`search ${search}`);
+
   const searchResult = await searchArtist(search);
 
-  
   console.log(`searchresult ${searchResult}`);
+  
   showArtists(searchResult);
 }
 
@@ -52,8 +54,12 @@ async function submitSearchAlbum(event) {
 
   const search = form.searchAlbumInput.value;
 
-  const searchResult = await searchAlbum(search);
+ 
 
+  const searchResult = await searchAlbum(search);
+  
+  
+  
   showAlbums(searchResult);
 }
 
@@ -92,12 +98,6 @@ function showArtist(artistObject) {
   document.querySelector("#artist-list").insertAdjacentHTML("beforeend", html);
 }
 
-
-
-
-
-
-
 function showAlbums(albums) {
   document.querySelector("#album-list").innerHTML = "";
 
@@ -120,9 +120,6 @@ function showAlbum(albumObject) {
 
   document.querySelector("#album-list").insertAdjacentHTML("beforeend", html);
 }
-
-
-
 
 function showTracks(tracks) {
   document.querySelector("#track-list").innerHTML = "";
