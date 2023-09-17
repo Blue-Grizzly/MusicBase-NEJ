@@ -32,19 +32,21 @@ async function initApp() {
 }
 
 async function submitSearchArtist(event) {
-  event.prevetDefault();
+  event.prevetDefault;
 
   const form = event.target;
 
   const search = form.searchArtistInput.value;
-
+ 
   const searchResult = await searchArtist(search);
 
+  
+  console.log(`searchresult ${searchResult}`);
   showArtists(searchResult);
 }
 
 async function submitSearchAlbum(event) {
-  event.prevetDefault();
+  event.prevetDefault;
 
   const form = event.target;
 
@@ -56,7 +58,7 @@ async function submitSearchAlbum(event) {
 }
 
 async function submitSearchTracks(event) {
-  event.prevetDefault();
+  event.prevetDefault;
 
   const form = event.target;
 
@@ -85,20 +87,26 @@ function showArtists(artists) {
 }
 
 function showArtist(artistObject) {
-  const html = `<li>${artistObject.name}</li>`;
+  const html = `<li>${artistObject.artist_name}</li>`;
 
   document.querySelector("#artist-list").insertAdjacentHTML("beforeend", html);
 }
 
+
+
+
+
+
+
 function showAlbums(albums) {
-  document.querySelector("#artist-list").innerHTML = "";
+  document.querySelector("#album-list").innerHTML = "";
 
   if (albums.length !== 0) {
     for (const album of albums) {
       showAlbum(album);
     }
   } else {
-    document.querySelector("#artist-list").insertAdjacentHTML(
+    document.querySelector("#album-list").insertAdjacentHTML(
       "beforeend",
       /*html*/ `
     <h2 id="search-error-msg"> No albums were found. Please try again.</h2>
@@ -113,15 +121,18 @@ function showAlbum(albumObject) {
   document.querySelector("#album-list").insertAdjacentHTML("beforeend", html);
 }
 
+
+
+
 function showTracks(tracks) {
-  document.querySelector("#artist-list").innerHTML = "";
+  document.querySelector("#track-list").innerHTML = "";
 
   if (tracks.length !== 0) {
     for (const track of tracks) {
       showTrack(track);
     }
   } else {
-    document.querySelector("#artist-list").insertAdjacentHTML(
+    document.querySelector("#track-list").insertAdjacentHTML(
       "beforeend",
       /*html*/ `
     <h2 id="search-error-msg"> No tracks were found. Please try again.</h2>

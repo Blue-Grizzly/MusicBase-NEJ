@@ -20,7 +20,10 @@ async function searchArtist(searchTerm) {
   const response = await fetch(
     `http://localhost:3000/search/artists/${searchTerm}`
   );
+
+  console.log(`repsonse ${response}`)
   const data = await response.json();
+ console.log(`data ${data}`);
   return data;
 }
 
@@ -40,4 +43,11 @@ async function searchTracks(searchTerm) {
   return data;
 }
 
-export {getArtists, getAlbums, getTracks, searchArtist, searchAlbum, searchTracks}
+export {
+  getArtists,
+  getAlbums,
+  getTracks,
+  searchArtist,
+  searchAlbum,
+  searchTracks,
+};
