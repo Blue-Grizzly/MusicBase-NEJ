@@ -32,7 +32,7 @@ async function initApp() {
 }
 
 async function submitSearchArtist(event) {
-  event.prevetDefault();
+  event.preventDefault();
 
   const form = event.target;
 
@@ -48,7 +48,7 @@ async function submitSearchArtist(event) {
 }
 
 async function submitSearchAlbum(event) {
-  event.prevetDefault();
+  event.preventDefault();
 
   const form = event.target;
 
@@ -60,7 +60,7 @@ async function submitSearchAlbum(event) {
 }
 
 async function submitSearchTracks(event) {
-  event.prevetDefault();
+  event.preventDefault();
 
   const form = event.target;
 
@@ -112,7 +112,7 @@ function showAlbums(albums) {
 }
 
 function showAlbum(albumObject) {
-  const html = `<li>${albumObject.name}</li>`;
+  const html = `<li>${albumObject.album_name}</li>`;
 
   document.querySelector("#album-list").insertAdjacentHTML("beforeend", html);
 }
@@ -135,7 +135,7 @@ function showTracks(tracks) {
 }
 
 function showTrack(trackObject) {
-  const html = `<li>${trackObject.name}</li>`;
+  const html = `<li>${trackObject.track_name}</li>`;
 
   document.querySelector("#track-list").insertAdjacentHTML("beforeend", html);
 }
