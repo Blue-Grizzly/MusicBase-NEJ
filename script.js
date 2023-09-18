@@ -32,39 +32,35 @@ async function initApp() {
 }
 
 async function submitSearchArtist(event) {
-  event.prevetDefault;
+  event.prevetDefault();
 
   const form = event.target;
 
   const search = form.searchArtistInput.value;
 
-   console.log(`search ${search}`);
+  console.log(`search ${search}`);
 
   const searchResult = await searchArtist(search);
 
   console.log(`searchresult ${searchResult}`);
-  
+
   showArtists(searchResult);
 }
 
 async function submitSearchAlbum(event) {
-  event.prevetDefault;
+  event.prevetDefault();
 
   const form = event.target;
 
   const search = form.searchAlbumInput.value;
 
- 
-
   const searchResult = await searchAlbum(search);
-  
-  
-  
+
   showAlbums(searchResult);
 }
 
 async function submitSearchTracks(event) {
-  event.prevetDefault;
+  event.prevetDefault();
 
   const form = event.target;
 

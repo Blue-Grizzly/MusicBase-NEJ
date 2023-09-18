@@ -21,9 +21,9 @@ async function searchArtist(searchTerm) {
     `http://localhost:3000/search/artists/${searchTerm}`
   );
 
-  console.log(`repsonse ${response}`)
+  console.log(`repsonse ${response}`);
   const data = await response.json();
- console.log(`data ${data}`);
+  console.log(`data ${data}`);
   return data;
 }
 
