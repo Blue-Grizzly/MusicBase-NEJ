@@ -1,8 +1,9 @@
-const endpoint = "nej-musicbase-azure.azurewebsites.net"
+const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
 
 async function getArtists() {
   const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
+  console.log(response);
   return data;
 }
 
@@ -20,7 +21,7 @@ async function getTracks() {
 
 async function searchArtist(searchTerm) {
   const response = await fetch(
-    `${endpoint}/artists/${searchTerm}`
+    `${endpoint}/search/artists/${searchTerm}`
   );
 
   console.log(`repsonse ${response}`);
