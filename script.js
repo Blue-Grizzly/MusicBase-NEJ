@@ -10,10 +10,7 @@ import { Track } from "./model/track.js"
 import {
   getArtists,
   getAlbums,
-  getTracks,
-  searchArtist,
-  searchAlbum,
-  searchTracks,
+  getTracks
 } from "./rest-service.js";
 import * as controller from "./rest-service.js"
 
