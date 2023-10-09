@@ -1,9 +1,6 @@
 class ArtistRenderer {
-    render(artist){
-
-       
-        
-            const html = `<li>${artist.name}</li>`;
+    render(artist){        
+        const html = `<li>${artist.name}</li>`;
 
         return html;
     }

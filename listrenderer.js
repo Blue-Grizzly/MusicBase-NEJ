@@ -1,17 +1,17 @@
 class ListRenderer{
     constructor (list, container, itemRenderer){
     this.container =document.querySelector(container);
-    this.itemRenderer = itemRenderer;
+    this.itemRenderer = new itemRenderer;
     this.list = list;
     }
     
     
     render() {
-        this.container.innerHTML = ""
+        // this.container.innerHTML = ""
 
         for (const item of this.list) {
-               const html =  this.itemRenderer(item)
-            this.container.innerHTML("beforend", html)
+               const html =  this.itemRenderer.render(item)
+            this.container.insertAdjacentHTML("beforeend", html)
             }
 
         }

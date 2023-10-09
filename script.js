@@ -1,11 +1,9 @@
 import { ListRenderer } from "./listrenderer.js";
-import { AlbumRenderer } from "./albumrenderer.js";
+
 import { ArtistRenderer } from "./artistrenderer.js";
 import { TrackRenderer } from "./trackrenderer.js";
 import { AlbumRenderer } from "./albumrenderer.js";
-import { Artist } from "./model/artist.js"
-import { Album } from "./model/album.js"
-import { Track } from "./model/track.js"
+
 
 import {
   getArtists,
@@ -36,13 +34,16 @@ async function initApp() {
     .addEventListener("submit", submitSearchTracks);
 
 
-  const artistsList = new ListRenderer(await controller.getArtists(), "#artist-list", new ArtistRenderer)
+  const artistsList = new ListRenderer(await controller.getArtists(), "#artist-list", ArtistRenderer)
   artistsList.render();
 
-  const albumList = new AlbumRenderer(await controller.getAlbums(), "#album-list", new AlbumRenderer)
+
+
+
+  const albumList = new ListRenderer(await controller.getAlbums(), "#album-list", AlbumRenderer)
   albumList.render();
 
-  const trackList = new TrackRenderer(await controller.getTracks(), "#track-list", new TrackRenderer)
+  const trackList = new ListRenderer(await controller.getTracks(), "#track-list", TrackRenderer)
   trackList.render();
 }
 
