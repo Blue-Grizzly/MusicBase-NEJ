@@ -1,10 +1,7 @@
 import {
   getArtists,
   getAlbums,
-  getTracks,
-  searchArtist,
-  searchAlbum,
-  searchTracks,
+  getTracks
 } from "./rest-service.js";
 
 window.addEventListener("load", initApp);
