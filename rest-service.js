@@ -1,4 +1,4 @@
-import Artist from "./model/aritst.js"
+import Artist from "./model/artist.js"
 import Album from "./model/album.js"
 import Track from "./model/track.js"
 
