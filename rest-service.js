@@ -1,24 +1,27 @@
+const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
+
 async function getArtists() {
-  const response = await fetch("http://localhost:3000/artists");
+  const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
+  console.log(response);
   return data;
 }
 
 async function getAlbums() {
-  const response = await fetch("http://localhost:3000/albums");
+  const response = await fetch(`${endpoint}/albums`);
   const data = await response.json();
   return data;
 }
 
 async function getTracks() {
-  const response = await fetch("http://localhost:3000/tracks");
+  const response = await fetch(`${endpoint}/tracks`);
   const data = await response.json();
   return data;
 }
 
 async function searchArtist(searchTerm) {
   const response = await fetch(
-    `http://localhost:3000/search/artists/${searchTerm}`
+    `${endpoint}/search/artists/${searchTerm}`
   );
 
   console.log(`repsonse ${response}`);
@@ -29,7 +32,7 @@ async function searchArtist(searchTerm) {
 
 async function searchAlbum(searchTerm) {
   const response = await fetch(
-    `http://localhost:3000/search/albums/${searchTerm}`
+    `${endpoint}/search/albums/${searchTerm}`
   );
   const data = await response.json();
   return data;
@@ -37,7 +40,7 @@ async function searchAlbum(searchTerm) {
 
 async function searchTracks(searchTerm) {
   const response = await fetch(
-    `http://localhost:3000/search/tracks/${searchTerm}`
+    `${endpoint}/search/tracks/${searchTerm}`
   );
   const data = await response.json();
   return data;

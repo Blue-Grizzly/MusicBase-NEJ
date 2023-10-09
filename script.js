@@ -10,9 +10,9 @@ import {
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  const artistList = await getArtists();
-  const albumList = await getAlbums();
-  const trackList = await getTracks();
+    const artistList = await getArtists();
+    const albumList = await getAlbums();
+    const trackList = await getTracks();
 
   showArtists(artistList);
   showAlbums(albumList);
@@ -89,7 +89,7 @@ function showArtists(artists) {
 }
 
 function showArtist(artistObject) {
-  const html = `<li>${artistObject.artist_name}</li>`;
+  const html = `<li>${artistObject.name}</li>`;
 
   document.querySelector("#artist-list").insertAdjacentHTML("beforeend", html);
 }
@@ -112,7 +112,7 @@ function showAlbums(albums) {
 }
 
 function showAlbum(albumObject) {
-  const html = `<li>${albumObject.album_name}</li>`;
+  const html = `<li>${albumObject.name}</li>`;
 
   document.querySelector("#album-list").insertAdjacentHTML("beforeend", html);
 }
@@ -135,7 +135,7 @@ function showTracks(tracks) {
 }
 
 function showTrack(trackObject) {
-  const html = `<li>${trackObject.track_name}</li>`;
+  const html = `<li>${trackObject.name}</li>`;
 
   document.querySelector("#track-list").insertAdjacentHTML("beforeend", html);
 }
