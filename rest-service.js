@@ -1,56 +1,30 @@
+import Artist from "./model/artist.js"
+import Album from "./model/album.js"
+import Track from "./model/track.js"
+
 const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
 
 async function getArtists() {
   const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
-  console.log(response);
-  return data;
+  return data.map(json => new Artist(json));
 }
 
 async function getAlbums() {
   const response = await fetch(`${endpoint}/albums`);
   const data = await response.json();
-  return data;
+  return data.map(json => new Album(json));
 }
 
 async function getTracks() {
   const response = await fetch(`${endpoint}/tracks`);
   const data = await response.json();
-  return data;
+  return data.map(json => new Track(json));
 }
 
-async function searchArtist(searchTerm) {
-  const response = await fetch(
-    `${endpoint}/search/artists/${searchTerm}`
-  );
-
-  console.log(`repsonse ${response}`);
-  const data = await response.json();
-  console.log(`data ${data}`);
-  return data;
-}
-
-async function searchAlbum(searchTerm) {
-  const response = await fetch(
-    `${endpoint}/search/albums/${searchTerm}`
-  );
-  const data = await response.json();
-  return data;
-}
-
-async function searchTracks(searchTerm) {
-  const response = await fetch(
-    `${endpoint}/search/tracks/${searchTerm}`
-  );
-  const data = await response.json();
-  return data;
-}
 
 export {
   getArtists,
   getAlbums,
-  getTracks,
-  searchArtist,
-  searchAlbum,
-  searchTracks,
+  getTracks
 };

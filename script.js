@@ -1,22 +1,25 @@
+import { ListRenderer } from "./listrenderer.js";
+
+import { ArtistRenderer } from "./artistrenderer.js";
+import { TrackRenderer } from "./trackrenderer.js";
+import { AlbumRenderer } from "./albumrenderer.js";
+
+
 import {
   getArtists,
   getAlbums,
-  getTracks,
-  searchArtist,
-  searchAlbum,
-  searchTracks,
+  getTracks
 } from "./rest-service.js";
+import * as controller from "./rest-service.js"
 
 window.addEventListener("load", initApp);
 
-async function initApp() {
-    const artistList = await getArtists();
-    const albumList = await getAlbums();
-    const trackList = await getTracks();
 
-  showArtists(artistList);
-  showAlbums(albumList);
-  showTracks(trackList);
+
+
+async function initApp() {
+
+
 
   document
     .querySelector("#search-artist-form")
@@ -29,7 +32,25 @@ async function initApp() {
   document
     .querySelector("#search-track-form")
     .addEventListener("submit", submitSearchTracks);
+
+
+  const artistsList = new ListRenderer(await controller.getArtists(), "#artist-list", ArtistRenderer)
+  artistsList.render();
+
+
+
+
+  const albumList = new ListRenderer(await controller.getAlbums(), "#album-list", AlbumRenderer)
+  albumList.render();
+
+  const trackList = new ListRenderer(await controller.getTracks(), "#track-list", TrackRenderer)
+  trackList.render();
 }
+
+
+
+
+
 
 async function submitSearchArtist(event) {
   event.preventDefault();
@@ -71,28 +92,6 @@ async function submitSearchTracks(event) {
   showTracks(searchResult);
 }
 
-function showArtists(artists) {
-  document.querySelector("#artist-list").innerHTML = "";
-
-  if (artists.length !== 0) {
-    for (const artist of artists) {
-      showArtist(artist);
-    }
-  } else {
-    document.querySelector("#artist-list").insertAdjacentHTML(
-      "beforeend",
-      /*html*/ `
-    <h2 id="search-error-msg"> No artists were found. Please try again.</h2>
-    `
-    );
-  }
-}
-
-function showArtist(artistObject) {
-  const html = `<li>${artistObject.name}</li>`;
-
-  document.querySelector("#artist-list").insertAdjacentHTML("beforeend", html);
-}
 
 function showAlbums(albums) {
   document.querySelector("#album-list").innerHTML = "";
@@ -111,11 +110,7 @@ function showAlbums(albums) {
   }
 }
 
-function showAlbum(albumObject) {
-  const html = `<li>${albumObject.name}</li>`;
 
-  document.querySelector("#album-list").insertAdjacentHTML("beforeend", html);
-}
 
 function showTracks(tracks) {
   document.querySelector("#track-list").innerHTML = "";
@@ -134,8 +129,3 @@ function showTracks(tracks) {
   }
 }
 
-function showTrack(trackObject) {
-  const html = `<li>${trackObject.name}</li>`;
-
-  document.querySelector("#track-list").insertAdjacentHTML("beforeend", html);
-}
