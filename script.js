@@ -7,16 +7,22 @@ import * as REST from "./rest-service.js";
 
 
 let tracks = [];
+let albums = [];
+let artists = [];
 
 
 let trackList;
 let albumList;
-let artistsList;
+let artistList;
 
 let createTrackDialog;
+let createArtistDialog;
+let createAlbumDialog;
 
 import * as controller from "./rest-service.js"
 import TrackCreateDialog from "./TrackCreateDialog.js";
+import ArtistCreateDialog from "./artistCreateDialog.js";
+import AlbumCreateDialog from "./albumCreateDialog.js";
 
 window.addEventListener("load", initApp);
 
@@ -28,11 +34,19 @@ async function initApp() {
   createTrackDialog = new TrackCreateDialog("create-track-dialog");
   createTrackDialog.render();
 
+  createArtistDialog = new ArtistCreateDialog("create-artist-dialog");
+  createArtistDialog.render();
+
+  createAlbumDialog = new AlbumCreateDialog("create-album-dialog");
+  createAlbumDialog.render();
+
   // document.querySelector("#btn-create-artist").addEventListener("click", createTrackDialog.show.find())
 
   // use show from the createTrackDialog class and use createTrackDialog as this value
   // if not .bind then it shows the modal by default
-  document.querySelector("#btn-create-artist").addEventListener("click", createTrackDialog.show.bind(createTrackDialog));
+  document.querySelector("#btn-create-track").addEventListener("click", createTrackDialog.show.bind(createTrackDialog));
+  document.querySelector("#btn-create-artist").addEventListener("click", createArtistDialog.show.bind(createArtistDialog));
+  document.querySelector("#btn-create-album").addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog));
 
   
   document
@@ -48,8 +62,8 @@ async function initApp() {
     .addEventListener("submit", submitSearchTracks);
 
 
-  artistsList = new ListRenderer(await controller.getAllArtists(), "#artist-list", ArtistRenderer)
-  artistsList.render();
+  artistList = new ListRenderer(await controller.getAllArtists(), "#artist-list", ArtistRenderer)
+  artistList.render();
 
 
 
@@ -106,7 +120,7 @@ async function submitSearchTracks(event) {
   showTracks(searchResult);
 }
 
-export default async function createTrack(track) {
+async function createTrack(track) {
   await REST.createTrack(track);
 
   tracks = await REST.getAllTracks();
@@ -116,40 +130,26 @@ export default async function createTrack(track) {
   trackList.render();
 }
 
-// function showAlbums(albums) {
-//   document.querySelector("#album-list").innerHTML = "";
+async function createAlbum(album) {
+  await REST.createAlbum(album);
 
-//   if (albums.length !== 0) {
-//     for (const album of albums) {
-//       showAlbum(album);
-//     }
-//   } else {
-//     document.querySelector("#album-list").insertAdjacentHTML(
-//       "beforeend",
-//       /*html*/ `
-//     <h2 id="search-error-msg"> No albums were found. Please try again.</h2>
-//     `
-//     );
-//   }
-// }
+  albums = await REST.getAllAlbums();
+
+  albumList.setList(albums);
+
+  albumList.render();
+}
 
 
+async function createArtist(artist) {
+  await REST.createArtist(artist);
 
-// function showTracks(tracks) {
-//   document.querySelector("#track-list").innerHTML = "";
+  artists = await REST.getAllArtists();
 
-//   if (tracks.length !== 0) {
-//     for (const track of tracks) {
-//       showTrack(track);
-//     }
-//   } else {
-//     document.querySelector("#track-list").insertAdjacentHTML(
-//       "beforeend",
-//       /*html*/ `
-//     <h2 id="search-error-msg"> No tracks were found. Please try again.</h2>
-//     `
-//     );
-//   }
-// }
+  artistList.setList(artists);
 
-export { submitSearchArtist, submitSearchAlbum, submitSearchTracks }
+  artistList.render();
+}
+
+
+export { submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist }
