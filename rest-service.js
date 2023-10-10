@@ -23,14 +23,14 @@ async function getAllArtists() {
   return artists
 }
 
-  async function fetchArtists() {
+async function fetchArtists() {
   const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
   artists = data.map(json => new Artist(json));
   lastArtistFetch = Date.now();
 }
 
- async function getAllAlbums() {
+async function getAllAlbums() {
   const now = Date.now();
   const timeDiff = now - lastAlbumFetch;
   if (timeDiff > 10_000) {
@@ -48,7 +48,7 @@ async function fetchAlbums() {
 }
 
 
- async function getAllTracks() {
+async function getAllTracks() {
   const now = Date.now();
   const timeDiff = now - lastTrackFetch;
   if (timeDiff > 10_000) {
@@ -65,9 +65,9 @@ async function fetchTracks() {
 }
 
 
-  async function createTrack(track) {
+async function createTrack(track) {
   const json = JSON.stringify(track);
-  const response = await fetch(`${endpoint}`, {
+  const response = await fetch(`${endpoint}/tracks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -81,8 +81,42 @@ async function fetchTracks() {
 
 }
 
-export{
-  createTrack, fetchAlbums, fetchArtists, fetchTracks, getAllAlbums, getAllArtists, getAllTracks, }
+async function createAlbum(album) {
+  const json = JSON.stringify(album);
+  const response = await fetch(`${endpoint}/albums`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: json
+  });
+
+  await fetchAlbums();
+
+  return response.ok
+
+}
+
+
+async function createArtist(artist) {
+  const json = JSON.stringify(artist);
+  const response = await fetch(`${endpoint}/artists`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: json
+  });
+
+  await fetchArtists();
+
+  return response.ok
+
+}
+
+export {
+  fetchAlbums, fetchArtists, fetchTracks, getAllAlbums, getAllArtists, getAllTracks, createTrack, createAlbum, createArtist
+}
 
 
 
