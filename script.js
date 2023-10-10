@@ -1,16 +1,22 @@
 import { ListRenderer } from "./listrenderer.js";
-
+import Dialogclass from "./TrackCreateDialog.js";
 import { ArtistRenderer } from "./artistrenderer.js";
 import { TrackRenderer } from "./trackrenderer.js";
 import { AlbumRenderer } from "./albumrenderer.js";
+import * as REST from "./rest-service.js";
 
 
-import {
-  getArtists,
-  getAlbums,
-  getTracks
-} from "./rest-service.js";
+let tracks = [];
+
+
+let trackList;
+let albumList;
+let artistsList;
+
+let createTrackDialog;
+
 import * as controller from "./rest-service.js"
+import TrackCreateDialog from "./TrackCreateDialog.js";
 
 window.addEventListener("load", initApp);
 
@@ -19,8 +25,16 @@ window.addEventListener("load", initApp);
 
 async function initApp() {
 
+  createTrackDialog = new TrackCreateDialog("create-track-dialog");
+  createTrackDialog.render();
 
+  // document.querySelector("#btn-create-artist").addEventListener("click", createTrackDialog.show.find())
 
+  // use show from the createTrackDialog class and use createTrackDialog as this value
+  // if not .bind then it shows the modal by default
+  document.querySelector("#btn-create-artist").addEventListener("click", createTrackDialog.show.bind(createTrackDialog));
+
+  
   document
     .querySelector("#search-artist-form")
     .addEventListener("submit", submitSearchArtist);
@@ -34,16 +48,16 @@ async function initApp() {
     .addEventListener("submit", submitSearchTracks);
 
 
-  const artistsList = new ListRenderer(await controller.getArtists(), "#artist-list", ArtistRenderer)
+  artistsList = new ListRenderer(await controller.getAllArtists(), "#artist-list", ArtistRenderer)
   artistsList.render();
 
 
 
 
-  const albumList = new ListRenderer(await controller.getAlbums(), "#album-list", AlbumRenderer)
+  albumList = new ListRenderer(await controller.getAllAlbums(), "#album-list", AlbumRenderer)
   albumList.render();
 
-  const trackList = new ListRenderer(await controller.getTracks(), "#track-list", TrackRenderer)
+  trackList = new ListRenderer(await controller.getAllTracks(), "#track-list", TrackRenderer)
   trackList.render();
 }
 
@@ -92,40 +106,50 @@ async function submitSearchTracks(event) {
   showTracks(searchResult);
 }
 
+export default async function createTrack(track) {
+  await REST.createTrack(track);
 
-function showAlbums(albums) {
-  document.querySelector("#album-list").innerHTML = "";
+  tracks = await REST.getAllTracks();
 
-  if (albums.length !== 0) {
-    for (const album of albums) {
-      showAlbum(album);
-    }
-  } else {
-    document.querySelector("#album-list").insertAdjacentHTML(
-      "beforeend",
-      /*html*/ `
-    <h2 id="search-error-msg"> No albums were found. Please try again.</h2>
-    `
-    );
-  }
+  trackList.setList(tracks);
+
+  trackList.render();
 }
 
+// function showAlbums(albums) {
+//   document.querySelector("#album-list").innerHTML = "";
+
+//   if (albums.length !== 0) {
+//     for (const album of albums) {
+//       showAlbum(album);
+//     }
+//   } else {
+//     document.querySelector("#album-list").insertAdjacentHTML(
+//       "beforeend",
+//       /*html*/ `
+//     <h2 id="search-error-msg"> No albums were found. Please try again.</h2>
+//     `
+//     );
+//   }
+// }
 
 
-function showTracks(tracks) {
-  document.querySelector("#track-list").innerHTML = "";
 
-  if (tracks.length !== 0) {
-    for (const track of tracks) {
-      showTrack(track);
-    }
-  } else {
-    document.querySelector("#track-list").insertAdjacentHTML(
-      "beforeend",
-      /*html*/ `
-    <h2 id="search-error-msg"> No tracks were found. Please try again.</h2>
-    `
-    );
-  }
-}
+// function showTracks(tracks) {
+//   document.querySelector("#track-list").innerHTML = "";
 
+//   if (tracks.length !== 0) {
+//     for (const track of tracks) {
+//       showTrack(track);
+//     }
+//   } else {
+//     document.querySelector("#track-list").insertAdjacentHTML(
+//       "beforeend",
+//       /*html*/ `
+//     <h2 id="search-error-msg"> No tracks were found. Please try again.</h2>
+//     `
+//     );
+//   }
+// }
+
+export { submitSearchArtist, submitSearchAlbum, submitSearchTracks }

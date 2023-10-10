@@ -15,6 +15,10 @@ class ListRenderer{
             }
 
         }
+    setList(list) {
+        // Build list of renderers with items in them
+        this.list = list.map(item => new this.itemRenderer(item));
+    }
 
 
 

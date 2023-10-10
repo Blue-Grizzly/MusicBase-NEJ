@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
+
+  
   <body>
     <h1>MusicBase</h1>
-
+<main>
     <form id="search-artist-form">
       <label for="searchArtistInput">
         <input type="text" name="searchArtistInput" id="searchArtistInput"
@@ -30,10 +32,13 @@
       <button>Search track</button>
     </form>
 
+    <button data-action="create" id="btn-create-artist"> Create Artist</button>
     <ul id="artist-list"></ul>
     <ul id="album-list"></ul>
     <ul id="track-list"></ul>
 
     <script src="script.js" type="module"></script>
+
+    </main>
   </body>
 </html>
