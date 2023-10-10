@@ -12,10 +12,9 @@ export default class ArtistCreateDialog extends Dialog {
             <label for="create-description">Artist description: </label> <input type="text" id="create-description" name="description" placeholder="Describe artist">
             <label for="create-image">Aritst Image: </label> <input type="text" id="create-image" name="image" placeholder="Artist image">
             <label for="create-labels">Artist Labels: </label> <input type="text" id="create-labels" name="labels" placeholder="The Artist's labels">
-                    <label for="create-birthday">Artist birthday: </label> <input type="text" id="create-birthday" name="birthday" placeholder="The Artist's birthday">
-                    <label for="create-website">Artist website: </label> <input type="text" id="create-website" name="website" placeholder="The Artist's website">
-
-                    <label for="create-active-since">Artist active since: </label> <input type="text" id="create-active-since" name="activeSince" placeholder="The Artist's active since">
+            <label for="create-birthday">Artist birthday: </label> <input type="text" id="create-birthday" name="birthday" placeholder="The Artist's birthday">
+            <label for="create-website">Artist website: </label> <input type="text" id="create-website" name="website" placeholder="The Artist's website">
+            <label for="create-active-since">Artist active since: </label> <input type="text" id="create-active-since" name="activeSince" placeholder="The Artist's active since">
             <label for="create-genres">Artist genres: </label> <input type="text" id="create-genres" name="genres" placeholder="The Artist's genres">
 
             <button data-action="cancel">Cancel</button>
