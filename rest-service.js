@@ -10,7 +10,9 @@ let lastTrackFetch = 0;
 let tracks = [];
 
 
-const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
+// const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
+const endpoint = "http://localhost:4000"
+
 
 async function getAllArtists() {
   const now = Date.now();
@@ -91,6 +93,7 @@ async function createAlbum(album) {
     body: json
   });
 
+  console.log(json);
   await fetchAlbums();
 
   return response.ok
@@ -114,8 +117,82 @@ async function createArtist(artist) {
 
 }
 
+async function updateAlbum(album){
+  const json = JSON.stringify(album);
+  const res = await fetch(`${endpoint}/${album.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body : json,
+  });
+
+  await getAllAlbums();
+
+  return res.ok;
+}
+
+async function updateArtist(artist){
+  const json = JSON.stringify(artist);
+  const res = await fetch(`${endpoint}/${artist.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body : json,
+  });
+
+  await getAllArtists();
+
+  return res.ok;
+}
+
+async function updateTrack(track){
+  const json = JSON.stringify(track);
+  const res = await fetch(`${endpoint}/${track.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body : json,
+  });
+
+  await getAllTracks();
+
+  return res.ok;
+}
+
+
+async function deleteArtist(artist){
+  const res = await fetch(`${endpoint}/${artist.id}`, {
+    method: "DELETE"
+  });
+  await getAllArtists();
+
+  return res.ok;
+}
+
+async function deleteAlbum(album){
+  const res = await fetch(`${endpoint}/${album.id}`, {
+    method: "DELETE"
+  });
+  await getAllAlbums();
+
+  return res.ok;
+}
+
+async function deleteTrack(track){
+  const res = await fetch(`${endpoint}/${track.id}`, {
+    method: "DELETE"
+  });
+  await getAllTracks();
+
+  return res.ok;
+}
+
+
 export {
-  fetchAlbums, fetchArtists, fetchTracks, getAllAlbums, getAllArtists, getAllTracks, createTrack, createAlbum, createArtist
+  fetchAlbums, fetchArtists, fetchTracks, getAllAlbums, getAllArtists, getAllTracks, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack
 }
 
 
