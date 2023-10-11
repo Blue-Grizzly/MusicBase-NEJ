@@ -1,6 +1,6 @@
 import Dialog from "./dialog.js";
-import Album from "./model/album.js";
-import * as controller from "./script.js"
+import Album from "../model/album.js";
+import * as controller from "../script.js"
 
 export default class AlbumCreateDialog extends Dialog {
     constructor(id){
