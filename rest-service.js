@@ -30,6 +30,7 @@ async function fetchArtists() {
   const data = await response.json();
   artists = data.map(json => new Artist(json));
   lastArtistFetch = Date.now();
+  return artists
 }
 
 async function getAllAlbums() {
@@ -47,6 +48,7 @@ async function fetchAlbums() {
   const data = await response.json();
   albums = data.map(json => new Album(json));
   lastAlbumFetch = Date.now();
+  return albums
 }
 
 
@@ -64,6 +66,8 @@ async function fetchTracks() {
   const data = await response.json();
   tracks = data.map(json => new Track(json));
   lastTrackFetch = Date.now();
+
+  return tracks
 }
 
 
@@ -119,7 +123,7 @@ async function createArtist(artist) {
 
 async function updateAlbum(album){
   const json = JSON.stringify(album);
-  const res = await fetch(`${endpoint}/${album.id}`, {
+  const res = await fetch(`${endpoint}/albums/${album.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -134,7 +138,7 @@ async function updateAlbum(album){
 
 async function updateArtist(artist){
   const json = JSON.stringify(artist);
-  const res = await fetch(`${endpoint}/${artist.id}`, {
+  const res = await fetch(`${endpoint}/artists/${artist.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -149,7 +153,7 @@ async function updateArtist(artist){
 
 async function updateTrack(track){
   const json = JSON.stringify(track);
-  const res = await fetch(`${endpoint}/${track.id}`, {
+  const res = await fetch(`${endpoint}/tracks/${track.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -164,7 +168,7 @@ async function updateTrack(track){
 
 
 async function deleteArtist(artist){
-  const res = await fetch(`${endpoint}/${artist.id}`, {
+  const res = await fetch(`${endpoint}/artists/${artist.id}`, {
     method: "DELETE"
   });
   await getAllArtists();
@@ -173,7 +177,7 @@ async function deleteArtist(artist){
 }
 
 async function deleteAlbum(album){
-  const res = await fetch(`${endpoint}/${album.id}`, {
+  const res = await fetch(`${endpoint}/albums/${album.id}`, {
     method: "DELETE"
   });
   await getAllAlbums();
@@ -182,7 +186,7 @@ async function deleteAlbum(album){
 }
 
 async function deleteTrack(track){
-  const res = await fetch(`${endpoint}/${track.id}`, {
+  const res = await fetch(`${endpoint}/tracks/${track.id}`, {
     method: "DELETE"
   });
   await getAllTracks();
