@@ -50,13 +50,13 @@ async function initApp() {
 
 
   deleteArtistDialog = new ArtistDeleteDialog("artist-delete-dialog")
-  deleteArtistDialog.render();
+
 
   deleteAlbumDialog = new AlbumDeleteDialog("album-delete-dialog");
-  deleteAlbumDialog.render()
+ 
 
   deleteTrackDialog = new TrackDeleteDialog("track-delete-dialog");
-  deleteTrackDialog.render()
+ 
   
   updateArtistDialog = new ArtistUpdateDialog("update-artist-dialog");
   updateArtistDialog.render();
