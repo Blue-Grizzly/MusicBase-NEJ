@@ -209,4 +209,4 @@ function confirmDeleteTrack(track) {
 }
 
 
-export { confirmDeleteArtist, confirmDeleteAlbum, confirmDeleteTrack,selectArtistForUpdate, selectAlbumForUpdate, selectTrackForUpdate, submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack }
+export { confirmDeleteArtist, confirmDeleteAlbum, confirmDeleteTrack,selectArtistForUpdate, selectAlbumForUpdate, selectTrackForUpdate, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack }
