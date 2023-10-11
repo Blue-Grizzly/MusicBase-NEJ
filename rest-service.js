@@ -30,6 +30,7 @@ async function fetchArtists() {
   const data = await response.json();
   artists = data.map(json => new Artist(json));
   lastArtistFetch = Date.now();
+  return artists
 }
 
 async function getAllAlbums() {
@@ -47,6 +48,7 @@ async function fetchAlbums() {
   const data = await response.json();
   albums = data.map(json => new Album(json));
   lastAlbumFetch = Date.now();
+  return albums
 }
 
 
@@ -64,6 +66,8 @@ async function fetchTracks() {
   const data = await response.json();
   tracks = data.map(json => new Track(json));
   lastTrackFetch = Date.now();
+
+  return tracks
 }
 
 

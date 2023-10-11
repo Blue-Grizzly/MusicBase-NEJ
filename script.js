@@ -4,7 +4,6 @@ import { TrackRenderer } from "./view/trackrenderer.js";
 import { AlbumRenderer } from "./view/albumrenderer.js";
 import * as REST from "./rest-service.js";
 import { initTabs } from "./view/tabs.js";
-import * as controller from "./rest-service.js"
 import TrackCreateDialog from "./view/TrackCreateDialog.js";
 import ArtistCreateDialog from "./view/artistCreateDialog.js";
 import AlbumCreateDialog from "./view/albumCreateDialog.js";
@@ -87,16 +86,16 @@ async function initApp() {
 
 
 
-  artistList = new ListRenderer(await controller.getAllArtists(), "#artist-list tbody", ArtistRenderer)
+  artistList = new ListRenderer(await REST.getAllArtists(), "#artist-list tbody", ArtistRenderer)
   artistList.render();
 
 
 
 
-  albumList = new ListRenderer(await controller.getAllAlbums(), "#album-list tbody", AlbumRenderer)
+  albumList = new ListRenderer(await REST.getAllAlbums(), "#album-list tbody", AlbumRenderer)
   albumList.render();
 
-  trackList = new ListRenderer(await controller.getAllTracks(), "#track-list tbody", TrackRenderer)
+  trackList = new ListRenderer(await REST.getAllTracks(), "#track-list tbody", TrackRenderer)
   trackList.render();
 }
 
@@ -169,7 +168,7 @@ async function deleteArtist(artist){
 
 async function deleteTrack(track){
   await REST.deleteTrack(track);
-  tracks = await REST.fetchTracks();
+  tracks = await REST.fetchTracks()
   trackList.setList(tracks);
   trackList.render();
 }
