@@ -10,8 +10,8 @@ let lastTrackFetch = 0;
 let tracks = [];
 
 
-// const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
-const endpoint = "http://localhost:4000"
+const endpoint = "https://nej-musicbase-azure.azurewebsites.net"
+// const endpoint = "http://localhost:4000"
 
 
 async function getAllArtists() {

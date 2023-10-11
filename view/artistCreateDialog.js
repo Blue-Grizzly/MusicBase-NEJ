@@ -1,4 +1,4 @@
-import Dialog from "../dialog.js";
+import Dialog from "./dialog.js";
 import Artist from "../model/artist.js";
 import * as controller from "../script.js"
 

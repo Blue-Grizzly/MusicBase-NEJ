@@ -1,4 +1,4 @@
-import ItemRenderer from "../itemRenderer.js";
+import ItemRenderer from "./itemRenderer.js";
 import * as controller from "../script.js"
 
 class ArtistRenderer extends ItemRenderer {
@@ -6,7 +6,6 @@ class ArtistRenderer extends ItemRenderer {
 
     render() {
         const artist = this.item
-        console.log(artist)
         const html = /*html */`
             <td>${artist.name}
             <td>${artist.description}</td>
