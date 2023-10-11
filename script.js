@@ -48,6 +48,25 @@ async function initApp() {
 
   initTabs();
 
+
+  deleteArtistDialog = new ArtistDeleteDialog("artist-delete-dialog")
+
+
+  deleteAlbumDialog = new AlbumDeleteDialog("album-delete-dialog");
+ 
+
+  deleteTrackDialog = new TrackDeleteDialog("track-delete-dialog");
+ 
+  
+  updateArtistDialog = new ArtistUpdateDialog("update-artist-dialog");
+  updateArtistDialog.render();
+
+  updateAlbumDialog = new AlbumUpdateDialog("update-album-dialog");
+  updateAlbumDialog.render();
+
+  updateTrackDialog = new TrackUpdateDialog("update-track-dialog");
+  updateTrackDialog.render();
+
   createTrackDialog = new TrackCreateDialog("create-track-dialog");
   createTrackDialog.render();
 

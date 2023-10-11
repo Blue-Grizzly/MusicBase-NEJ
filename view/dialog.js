@@ -34,6 +34,8 @@ export default class Dialog {
                     case "submit": this.submit(); break;
                     case "update": this.update(); break;
                     case "cancel": this.close(); break;
+                    case "delete": this.delete(); break;
+                    // good default to show error
                     default: console.error("Unknown action: " + action);
                 }
             })
