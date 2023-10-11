@@ -1,6 +1,6 @@
-import Dialog from "./dialog.js";
-import Artist from "./model/artist.js";
-import * as controller from "./script.js"
+import Dialog from "../dialog.js";
+import Artist from "../model/artist.js";
+import * as controller from "../script.js"
 
 export default class ArtistCreateDialog extends Dialog {
 
@@ -26,7 +26,7 @@ export default class ArtistCreateDialog extends Dialog {
 
     create() {
         const form = this.dialog.querySelector("form")
-        this.Artist = new Artist ({
+        this.Artist = new Artist({
             name: form.name.value,
             description: form.description.value,
             image: form.image.value,

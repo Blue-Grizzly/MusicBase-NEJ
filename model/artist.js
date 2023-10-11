@@ -7,7 +7,7 @@ export default class Artist {
         this.website = artist.website
         this.birthday = artist.birthday
         this.activeSince = artist.activeSince
-        this.labels = artist.label
+        this.labels = artist.labels
         this.genres = artist.genres
         this.albums = artist.albums
     }

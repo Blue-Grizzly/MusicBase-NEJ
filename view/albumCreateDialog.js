@@ -1,9 +1,9 @@
 import Dialog from "./dialog.js";
-import Album from "./model/album.js";
-import * as controller from "./script.js"
+import Album from "../model/album.js";
+import * as controller from "../script.js"
 
 export default class AlbumCreateDialog extends Dialog {
-    constructor(id){
+    constructor(id) {
         super(id)
         this.trackList = []
         this.artistList = []
@@ -46,13 +46,13 @@ export default class AlbumCreateDialog extends Dialog {
         return html;
     }
 
-    initButtons(){
+    initButtons() {
         document.querySelector("#btn-add-track").addEventListener("click", this.createAlbumTrack.bind(this));
         document.querySelector("#btn-add-artist").addEventListener("click", this.createAlbumArtist.bind(this));;
 
     }
-    
-    createAlbumTrack(){
+
+    createAlbumTrack() {
         const form = this.dialog.querySelector("form");
         const track = {
             name: form.trackname.value,
@@ -62,10 +62,10 @@ export default class AlbumCreateDialog extends Dialog {
         form.trackname.value = null
         form.trackduration.value = null
         console.log(this.trackList)
-        
+
     }
 
-    createAlbumArtist(){
+    createAlbumArtist() {
         const form = this.dialog.querySelector("form");
         const artist = {
             name: form.artistname.value,
@@ -79,7 +79,7 @@ export default class AlbumCreateDialog extends Dialog {
         }
         this.artistList.push(artist)
         form.trackname.value = null
-        form.trackduration.value = null        
+        form.trackduration.value = null
     }
 
     create() {
