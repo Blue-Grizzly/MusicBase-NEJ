@@ -8,6 +8,14 @@ import * as controller from "./rest-service.js"
 import TrackCreateDialog from "./view/TrackCreateDialog.js";
 import ArtistCreateDialog from "./view/artistCreateDialog.js";
 import AlbumCreateDialog from "./view/albumCreateDialog.js";
+import AlbumUpdateDialog from "./view/albumUpdateDialog.js";
+import AlbumDeleteDialog from "./view/albumDeleteDialog.js";
+import ArtistDeleteDialog from "./view/artistDeleteDialog.js";
+import ArtistUpdateDialog from "./view/artistUpdateDialog.js";
+import TrackUpdateDialog from "./view/trackUpdateDialog.js";
+import TrackDeleteDialog from "./view/trackDeleteDialog.js";
+
+
 
 let tracks = [];
 let albums = [];
@@ -238,4 +246,4 @@ function confirmDeleteTrack(track) {
 }
 
 
-export { confirmDeleteArtist, confirmDeleteAlbum, confirmDeleteTrack,selectArtistForUpdate, selectAlbumForUpdate, selectTrackForUpdate, submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist }
+export { confirmDeleteArtist, confirmDeleteAlbum, confirmDeleteTrack,selectArtistForUpdate, selectAlbumForUpdate, selectTrackForUpdate, submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack }
