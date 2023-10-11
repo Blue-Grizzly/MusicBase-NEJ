@@ -39,6 +39,7 @@ async function initApp() {
 
   createAlbumDialog = new AlbumCreateDialog("create-album-dialog");
   createAlbumDialog.render();
+  createAlbumDialog.initButtons();
 
   // document.querySelector("#btn-create-artist").addEventListener("click", createTrackDialog.show.find())
 
