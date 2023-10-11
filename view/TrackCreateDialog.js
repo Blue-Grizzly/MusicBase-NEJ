@@ -1,8 +1,8 @@
 import Dialog from "./dialog.js";
-import Track from "./model/track.js";
-import * as controller from  "./script.js"
+import Track from "../model/track.js";
+import * as controller from "../script.js"
 
-export default class TrackCreateDialog extends Dialog{
+export default class TrackCreateDialog extends Dialog {
 
 
     renderHTML() {
@@ -20,19 +20,19 @@ export default class TrackCreateDialog extends Dialog{
         return html;
     }
 
-create(){
-    const form = this.dialog.querySelector("form")
-    this.Track = new Track({
-        name: form.name.value,
-        length:form.length.value,
-        artist: form.artist.value,
-        album: form.album.value
-    });
+    create() {
+        const form = this.dialog.querySelector("form")
+        this.Track = new Track({
+            name: form.name.value,
+            length: form.length.value,
+            artist: form.artist.value,
+            album: form.album.value
+        });
 
-    form.reset();
+        form.reset();
 
-    controller.createTrack(this.Track)
-}
+        controller.createTrack(this.Track)
+    }
 
 
 

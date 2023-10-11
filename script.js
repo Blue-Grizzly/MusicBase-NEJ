@@ -1,10 +1,10 @@
-import { ListRenderer } from "./listrenderer.js";
+import { ListRenderer } from "./view/listrenderer.js";
 import Dialogclass from "./TrackCreateDialog.js";
 import { ArtistRenderer } from "./artistrenderer.js";
 import { TrackRenderer } from "./trackrenderer.js";
 import { AlbumRenderer } from "./albumrenderer.js";
 import * as REST from "./rest-service.js";
-
+import { initTabs } from "./view/tabs.js";
 
 let tracks = [];
 let albums = [];
@@ -24,12 +24,22 @@ import TrackCreateDialog from "./TrackCreateDialog.js";
 import ArtistCreateDialog from "./artistCreateDialog.js";
 import AlbumCreateDialog from "./albumCreateDialog.js";
 
+let updateArtistDialog;
+let updateAlbumDialog;
+let updateTrackDialog;
+
+let deleteArtistDialog;
+let deleteAlbumDialog;
+let deleteTrackDialog;
+
 window.addEventListener("load", initApp);
 
 
 
 
 async function initApp() {
+
+  initTabs();
 
   createTrackDialog = new TrackCreateDialog("create-track-dialog");
   createTrackDialog.render();
@@ -63,16 +73,16 @@ async function initApp() {
     .addEventListener("submit", submitSearchTracks);
 
 
-  artistList = new ListRenderer(await controller.getAllArtists(), "#artist-list", ArtistRenderer)
+  artistList = new ListRenderer(await controller.getAllArtists(), "#artist-list tbody", ArtistRenderer)
   artistList.render();
 
 
 
 
-  albumList = new ListRenderer(await controller.getAllAlbums(), "#album-list", AlbumRenderer)
+  albumList = new ListRenderer(await controller.getAllAlbums(), "#album-list tbody", AlbumRenderer)
   albumList.render();
 
-  trackList = new ListRenderer(await controller.getAllTracks(), "#track-list", TrackRenderer)
+  trackList = new ListRenderer(await controller.getAllTracks(), "#track-list tbody", TrackRenderer)
   trackList.render();
 }
 
@@ -152,5 +162,82 @@ async function createArtist(artist) {
   artistList.render();
 }
 
+async function updateAlbum(album){
+  await REST.updateAlbum(album);
+  albums = await REST.getAllAlbums();
+  albumList.setList(albums);
+  albumList.render();
+}
 
-export { submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist }
+async function updateArtist(artist){
+  await REST.updateArtist(artist);
+  artists = await REST.getAllArtists();
+  artistList.setList(artists);
+  artistList.render();
+}
+
+async function updateTrack(track){
+  await REST.updateTrack(track);
+  tracks = await REST.getAllTracks();
+  trackList.setList(tracks);
+  trackList.render();
+}
+
+async function deleteAlbum(album){
+  await REST.deleteAlbum(album);
+  albums = await REST.getAllAlbums();
+  albumList.setList(albums);
+  albumList.render();
+}
+
+async function deleteArtist(artist){
+  await REST.deleteArtist(artist);
+  artists = await REST.getAllArtists();
+  artistList.setList(artists);
+  artistList.render();
+}
+
+async function deleteTrack(track){
+  await REST.deleteTrack(track);
+  tracks = await REST.getAllTracks();
+  trackList.setList(tracks);
+  trackList.render();
+}
+
+
+export { submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack }
+async function selectArtistForUpdate(artist){
+updateArtistDialog.setArtist(artist);
+updateArtistDialog.show();
+}
+
+async function selectAlbumForUpdate(album) {
+  updateAlbumDialog.setAlbum(album);
+  updateAlbumDialog.show();
+}
+
+async function selectTrackForUpdate(track) {
+  updateTrackDialog.setAlbum(track);
+  updateTrackDialog.show();
+}
+
+function confirmDeleteArtist(artist) {
+  deleteArtistDialog.setArtist(artist);
+  deleteArtistDialog.render();
+  deleteArtistDialog.show();
+}
+
+function confirmDeleteAlbum(album) {
+  deleteAlbumDialog.setAlbum (album);
+  deleteAlbumDialog.render();
+  deleteAlbumDialog.show();
+}
+
+function confirmDeleteTrack(track) {
+  deleteTrackDialog.setTrack(track);
+  deleteTrackDialog.render();
+  deleteTrackDialog.show();
+}
+
+
+export { confirmDeleteArtist, confirmDeleteAlbum, confirmDeleteTrack,selectArtistForUpdate, selectAlbumForUpdate, selectTrackForUpdate,submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist }

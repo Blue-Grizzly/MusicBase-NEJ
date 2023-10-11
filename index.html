@@ -37,10 +37,58 @@
     <button data-action="create" id="btn-create-album"> Create Album</button>
     
 
-    <ul id="artist-list"></ul>
+    <!-- <ul id="artist-list"></ul>
     <ul id="album-list"></ul>
-    <ul id="track-list"></ul>
+    <ul id="track-list"></ul> -->
 
+    <h1>Artists, Albums and Tracks</h1>
+
+  <div id="tabs">
+    <h2 data-tab-show="artist-list">Artists</h2>
+    <h2 data-tab-show="album-list">Albums</h2>
+    <h2 data-tab-show="track-list">Tracks</h2>
+
+   
+    <table id="artist-list" class="hide">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Website</th>
+          <th>Birthday</th>
+           <th>Active Since</th>
+          <th>Labels</th>
+          <th>Genres</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+</div>
+    <table id="album-list" class="hide">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+         
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    
+    <table id="track-list" class="hide">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Duration</th>
+                
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+  </div>
     <script src="script.js" type="module"></script>
 
     </main>
