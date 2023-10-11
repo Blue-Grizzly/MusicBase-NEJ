@@ -85,18 +85,6 @@ async function initApp() {
   document.querySelector("#btn-create-artist").addEventListener("click", createArtistDialog.show.bind(createArtistDialog));
   document.querySelector("#btn-create-album").addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog));
 
-  
-  document
-    .querySelector("#search-artist-form")
-    .addEventListener("submit", submitSearchArtist);
-
-  document
-    .querySelector("#search-album-form")
-    .addEventListener("submit", submitSearchAlbum);
-
-  document
-    .querySelector("#search-track-form")
-    .addEventListener("submit", submitSearchTracks);
 
 
   artistList = new ListRenderer(await controller.getAllArtists(), "#artist-list tbody", ArtistRenderer)
@@ -112,50 +100,6 @@ async function initApp() {
   trackList.render();
 }
 
-
-
-
-
-
-async function submitSearchArtist(event) {
-  event.preventDefault();
-
-  const form = event.target;
-
-  const search = form.searchArtistInput.value;
-
-  console.log(`search ${search}`);
-
-  const searchResult = await searchArtist(search);
-
-  console.log(`searchresult ${searchResult}`);
-
-  showArtists(searchResult);
-}
-
-async function submitSearchAlbum(event) {
-  event.preventDefault();
-
-  const form = event.target;
-
-  const search = form.searchAlbumInput.value;
-
-  const searchResult = await searchAlbum(search);
-
-  showAlbums(searchResult);
-}
-
-async function submitSearchTracks(event) {
-  event.preventDefault();
-
-  const form = event.target;
-
-  const search = form.searchTrackInput.value;
-
-  const searchResult = await searchTracks(search);
-
-  showTracks(searchResult);
-}
 
 async function createTrack(track) {
   await REST.createTrack(track);
@@ -190,42 +134,42 @@ async function createArtist(artist) {
 
 async function updateAlbum(album){
   await REST.updateAlbum(album);
-  albums = await REST.getAllAlbums();
+  albums = await REST.fetchAlbums();
   albumList.setList(albums);
   albumList.render();
 }
 
 async function updateArtist(artist){
   await REST.updateArtist(artist);
-  artists = await REST.getAllArtists();
+  artists = await REST.fetchArtists();
   artistList.setList(artists);
   artistList.render();
 }
 
 async function updateTrack(track){
   await REST.updateTrack(track);
-  tracks = await REST.getAllTracks();
+  tracks = await REST.fetchTracks();
   trackList.setList(tracks);
   trackList.render();
 }
 
 async function deleteAlbum(album){
   await REST.deleteAlbum(album);
-  albums = await REST.getAllAlbums();
+  albums = await REST.fetchAlbums();
   albumList.setList(albums);
   albumList.render();
 }
 
 async function deleteArtist(artist){
   await REST.deleteArtist(artist);
-  artists = await REST.getAllArtists();
+  artists = await REST.fetchArtists();
   artistList.setList(artists);
   artistList.render();
 }
 
 async function deleteTrack(track){
   await REST.deleteTrack(track);
-  tracks = await REST.getAllTracks();
+  tracks = await REST.fetchTracks();
   trackList.setList(tracks);
   trackList.render();
 }
