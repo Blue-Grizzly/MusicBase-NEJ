@@ -205,7 +205,6 @@ async function deleteTrack(track){
 }
 
 
-export { submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack }
 async function selectArtistForUpdate(artist){
 updateArtistDialog.setArtist(artist);
 updateArtistDialog.show();

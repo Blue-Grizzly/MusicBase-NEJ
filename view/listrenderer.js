@@ -16,7 +16,11 @@ class ListRenderer{
         for (const itemRenderer of this.list) {
           const html = itemRenderer.render();
           this.container.insertAdjacentHTML("beforeend", html);
-
+            
+            if (itemRenderer.postRender) {
+                const element = this.container.lastElementChild;
+                itemRenderer.postRender(element);
+            }
         }
       }
 
