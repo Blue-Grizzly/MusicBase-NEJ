@@ -1,4 +1,4 @@
-import ItemRenderer from "../itemRenderer.js";
+import ItemRenderer from "./itemRenderer.js";
 import * as controller from "../script.js"
 
 class TrackRenderer extends ItemRenderer {

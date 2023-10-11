@@ -61,7 +61,6 @@ export default class AlbumCreateDialog extends Dialog {
         this.trackList.push(track)
         form.trackname.value = null
         form.trackduration.value = null
-        console.log(this.trackList)
 
     }
 
@@ -94,8 +93,6 @@ export default class AlbumCreateDialog extends Dialog {
         this.trackList = [];
         this.artistList = []
         form.reset();
-
-        console.log(this.Album);
 
         controller.createAlbum(this.Album)
     }
