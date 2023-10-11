@@ -88,12 +88,14 @@ export default class AlbumCreateDialog extends Dialog {
             name: form.name.value,
             image: form.image.value,
             tracks: this.trackList,
-            artist: this.artistList
+            artists: this.artistList,
         });
 
         this.trackList = [];
         this.artistList = []
         form.reset();
+
+        console.log(this.Album);
 
         controller.createAlbum(this.Album)
     }

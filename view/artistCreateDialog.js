@@ -7,7 +7,7 @@ export default class ArtistCreateDialog extends Dialog {
 
     renderHTML() {
         const html = /*HTML */`
-        <form action="" method="dialog"  id="create-track-form">
+        <form action="" method="dialog"  id="create-artist-form">
             <label for="create-name" >Artist Name:</label><input type="text" id="create-name" name="name" placeholder="The artist's name">
             <label for="create-description">Artist description: </label> <input type="text" id="create-description" name="description" placeholder="Describe artist">
             <label for="create-image">Aritst Image: </label> <input type="text" id="create-image" name="image" placeholder="Artist image">

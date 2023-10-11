@@ -162,6 +162,50 @@ async function createArtist(artist) {
   artistList.render();
 }
 
+async function updateAlbum(album){
+  await REST.updateAlbum(album);
+  albums = await REST.getAllAlbums();
+  albumList.setList(albums);
+  albumList.render();
+}
+
+async function updateArtist(artist){
+  await REST.updateArtist(artist);
+  artists = await REST.getAllArtists();
+  artistList.setList(artists);
+  artistList.render();
+}
+
+async function updateTrack(track){
+  await REST.updateTrack(track);
+  tracks = await REST.getAllTracks();
+  trackList.setList(tracks);
+  trackList.render();
+}
+
+async function deleteAlbum(album){
+  await REST.deleteAlbum(album);
+  albums = await REST.getAllAlbums();
+  albumList.setList(albums);
+  albumList.render();
+}
+
+async function deleteArtist(artist){
+  await REST.deleteArtist(artist);
+  artists = await REST.getAllArtists();
+  artistList.setList(artists);
+  artistList.render();
+}
+
+async function deleteTrack(track){
+  await REST.deleteTrack(track);
+  tracks = await REST.getAllTracks();
+  trackList.setList(tracks);
+  trackList.render();
+}
+
+
+export { submitSearchArtist, submitSearchAlbum, submitSearchTracks, createTrack, createAlbum, createArtist, updateAlbum, updateArtist, updateTrack, deleteAlbum, deleteArtist, deleteTrack }
 async function selectArtistForUpdate(artist){
 updateArtistDialog.setArtist(artist);
 updateArtistDialog.show();
