@@ -1,24 +1,26 @@
 class ListRenderer{
     constructor (list, container, itemRenderer){
     this.container =document.querySelector(container);
-    this.itemRenderer = new itemRenderer;
-    this.list = list;
+    this.itemRenderer = itemRenderer;
+    this.setList(list);
     }
     
-    
-    render() {
-        // this.container.innerHTML = ""
-
-        for (const item of this.list) {
-               const html =  this.itemRenderer.render(item)
-            this.container.insertAdjacentHTML("beforeend", html)
-            }
-
-        }
     setList(list) {
         // Build list of renderers with items in them
         this.list = list.map(item => new this.itemRenderer(item));
     }
+    
+    render() {
+        this.clear();
+       
+        for (const itemRenderer of this.list) {
+          const html = itemRenderer.render();
+          this.container.insertAdjacentHTML("beforeend", html);
+
+        }
+      }
+
+        
 
 
 
@@ -72,8 +74,7 @@ class ListRenderer{
 
    
     clear() {
-        const table = document.querySelector(container)
-        table.innerHTML = "";
+        this.container.innerHTML = "";
     }
 
     filterList(filterProperty, filterValue) {

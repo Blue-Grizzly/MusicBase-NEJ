@@ -6,6 +6,7 @@ export default class AlbumCreateDialog extends Dialog {
     constructor(id){
         super(id)
         this.trackList = []
+        this.artistList = []
     }
     renderHTML() {
         const html = /*HTML */`
@@ -73,7 +74,7 @@ export default class AlbumCreateDialog extends Dialog {
             website: form.website.value,
             birthday: form.birthday.value,
             activeSince: form.activeSince.value,
-            labels: form.label.value,
+            labels: form.labels.value,
             genres: form.genres.value,
         }
         this.artistList.push(artist)
@@ -85,7 +86,7 @@ export default class AlbumCreateDialog extends Dialog {
         const form = this.dialog.querySelector("#create-album-form")
         this.Album = new Album({
             name: form.name.value,
-            artist: form.artist.value,
+            image: form.image.value,
             tracks: this.trackList,
             artist: this.artistList
         });

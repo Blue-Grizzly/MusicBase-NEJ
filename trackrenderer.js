@@ -1,6 +1,10 @@
-class TrackRenderer {
+import ItemRenderer from "./itemRenderer.js";
 
-    render(track){
+
+class TrackRenderer extends ItemRenderer{
+
+    render(){
+        const track = this.item
     
     const html = `<li>${track.name}</li>`;
 
