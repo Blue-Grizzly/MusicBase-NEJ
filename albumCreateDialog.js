@@ -24,9 +24,9 @@ export default class AlbumCreateDialog extends Dialog {
         <br><br>
 
 
-                <label for="create-name" >Artist Name:</label><input type="text" id="create-name" name="name" placeholder="The artist's name">
+                <label for="artistname" >Artist Name:</label><input type="text" id="artistname" name="artistname" placeholder="The artist's name">
                 <label for="create-description">Artist description: </label> <input type="text" id="create-description" name="description" placeholder="Describe artist">
-                <label for="create-image">Aritst Image: </label> <input type="text" id="create-image" name="image" placeholder="Artist image">
+                <label for="arttistimage">Aritst Image: </label> <input type="text" id="arttistimage" name="arttistimage" placeholder="Artist image">
                 <label for="create-labels">Artist Labels: </label> <input type="text" id="create-labels" name="labels" placeholder="The Artist's labels">
                 <label for="create-birthday">Artist birthday: </label> <input type="text" id="create-birthday" name="birthday" placeholder="The Artist's birthday">
                 <label for="create-website">Artist website: </label> <input type="text" id="create-website" name="website" placeholder="The Artist's website">
@@ -65,7 +65,6 @@ export default class AlbumCreateDialog extends Dialog {
     }
 
     createAlbumArtist(){
-        this.artistList = []
         const form = this.dialog.querySelector("form");
         const artist = {
             name: form.artistname.value,
@@ -92,6 +91,7 @@ export default class AlbumCreateDialog extends Dialog {
         });
 
         this.trackList = [];
+        this.artistList = []
         form.reset();
 
         controller.createAlbum(this.Album)
