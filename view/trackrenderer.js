@@ -6,11 +6,11 @@ class TrackRenderer extends ItemRenderer {
     render() {
         const track = this.item
 
-        const html = `
+        const html = /*html */`
     <td>${track.name}</td>
     <td>${track.length}</td>
-    <td class="tooltip"> ♻️ <span class="tooltiptext">Update</span></td>
-    <td class="tooltip"> 🗑️ <span class="tooltiptext">Delete</span></td>  
+    <td data-action="update" class="tooltip"> ♻️ <span class="tooltiptext">Update</span></td>
+    <td data-action="delete" class="tooltip"> 🗑️ <span class="tooltiptext">Delete</span></td>  
     `;
 
         return html
