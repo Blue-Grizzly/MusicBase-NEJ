@@ -15,8 +15,8 @@ class ArtistRenderer extends ItemRenderer {
             <td>${artist.activeSince}</td>
             <td>${artist.labels}</td>
             <td>${artist.genres}</td>
-            <td data-action="update" class="tooltip"> ♻️ <span class="tooltiptext">Update</span></td>
-            <td data-action="delete" class="tooltip"> 🗑️ <span class="tooltiptext">Delete</span></td>  
+            <td > <div data-action="update" class="tooltip">♻️ <span class="tooltiptext">Update</span></div> 
+             <div data-action="delete" class="tooltip" >🗑️ <span class="tooltiptext">Delete</span></div> </td>  
           
         
         </td>`;
