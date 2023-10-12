@@ -115,6 +115,15 @@ async function initApp() {
 
   )
 
+// takes value of search field and runs search method on instance of class
+  document.querySelector("#searchInput").addEventListener("keyup", ()=>{
+    const searchTerm = document.querySelector("#searchInput").value;
+
+    artistList.search(searchTerm);
+    albumList.search(searchTerm);
+    trackList.search(searchTerm);
+  })
+
   // MAKE TH IN LISTS CLICKABLE 
   document.querySelectorAll("[data-action='sort-artist']").forEach(button => button.addEventListener("click", () => {
   

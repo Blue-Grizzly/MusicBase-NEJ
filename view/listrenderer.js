@@ -18,7 +18,18 @@ class ListRenderer{
         itemRenderer.item[this.filterProperty].includes(this.filterValue)) 
         
 
-        for (const itemRenderer of filteredList) {
+           
+        if (this.searchValue == undefined || this.searchValue.length < 1 ){
+                this.searchedList =filteredList
+            }else {
+                this.searchedList = filteredList.filter(itemRenderer => itemRenderer.item.name.toLowerCase().includes(this.searchValue))
+           
+           // this.searchedList = filteredList.filter(itemRenderer => Object.values(itemRenderer).some(value => value.toString().toLowerCase().includes(this.searchValue)))
+
+            }
+
+
+        for (const itemRenderer of this.searchedList) {
           const html = itemRenderer.render();
           this.container.insertAdjacentHTML("beforeend", html);
             
@@ -82,6 +93,13 @@ class ListRenderer{
 
 
     }
+
+    search(searchValue){
+        this.searchValue = searchValue.trim().toLowerCase();
+        this.render()
+    }
+
+
 }
 
 
