@@ -11,6 +11,25 @@
   <body>
     <h1>MusicBase</h1>
 <main>
+
+  <p>
+  Filter:
+    <select id="selectFilter"">
+      <option data-action="filter" value="All">All</option>
+      <option data-action="filter" value="genres:Pop">Pop</option>
+      <option data-action="filter" value="genres:Folk">Folk</option>
+      <option data-action="filter" value="genres:Rock">Rock</option> 
+      <option data-action="filter" value="genres:Jazz">Jazz</option>
+
+
+
+    </select>
+  </p>
+
+
+
+
+
     <form id="search-artist-form">
       <label for="searchArtistInput">
         <input type="text" name="searchArtistInput" id="searchArtistInput"
@@ -52,15 +71,15 @@
     <table id="artist-list" class="hide">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Website</th>
-          <th>Birthday</th>
-           <th>Active Since</th>
-          <th>Labels</th>
-          <th>Genres</th>
-          <th>Button</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="name">Name</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="description">Description</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="imgae">Image</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="website">Website</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="birthday">Birthday</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="activesince">Active Since</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="labels">Labels</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="genres">Genres</th>
+          <th >Button</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -69,8 +88,8 @@
     <table id="album-list" class="hide">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Image</th>
+          <th data-action="sort-album" data-sort-direction ="asc" data-sort-by="name">Name</th>
+          <th data-action="sort-album" data-sort-direction ="asc" data-sort-by="name">Image</th>
          
         </tr>
       </thead>
@@ -81,8 +100,8 @@
     <table id="track-list" class="hide">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Duration</th>
+          <th data-action="sort-track" data-sort-direction ="asc" data-sort-by="name">Name</th>
+          <th data-action="sort-track" data-sort-direction ="asc" data-sort-by="length">Duration</th>
                 
         </tr>
       </thead>

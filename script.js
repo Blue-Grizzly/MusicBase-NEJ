@@ -45,6 +45,8 @@ window.addEventListener("load", initApp);
 
 async function initApp() {
 
+
+
   initTabs();
 
 
@@ -84,19 +86,72 @@ async function initApp() {
   document.querySelector("#btn-create-artist").addEventListener("click", createArtistDialog.show.bind(createArtistDialog));
   document.querySelector("#btn-create-album").addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog));
 
+  // initialize filter buttons
 
 
+
+
+
+
+  // MAKE INSTANCES OF CLASSES 
   artistList = new ListRenderer(await REST.getAllArtists(), "#artist-list tbody", ArtistRenderer)
   artistList.render();
-
-
-
 
   albumList = new ListRenderer(await REST.getAllAlbums(), "#album-list tbody", AlbumRenderer)
   albumList.render();
 
   trackList = new ListRenderer(await REST.getAllTracks(), "#track-list tbody", TrackRenderer)
   trackList.render();
+
+
+  document.querySelector("#selectFilter").addEventListener("change",
+    () => {
+      const [prop, val] = document.querySelector("#selectFilter").value.split(":");
+      console.log(prop)
+      console.log(val)
+      artistList.filterList(prop, val);
+     
+    }
+
+  )
+
+  // MAKE TH IN LISTS CLICKABLE 
+  document.querySelectorAll("[data-action='sort-artist']").forEach(button => button.addEventListener("click", () => {
+  
+  document.querySelector("[data-action=sort-artist].selected")?.classList.remove("selected");
+
+  artistList.sort(button.dataset.sortBy, button.dataset.sortDirection);
+    button.classList.add("selected")
+    button.dataset.sortDirection = artistList.sortDir
+  }))
+
+
+
+
+  
+  document.querySelectorAll("[data-action='sort-album']").forEach(button => 
+    button.addEventListener("click", () => {
+
+    document.querySelector("[data-action=sort-album].selected")?.classList.remove("selected");
+
+    albumList.sort(button.dataset.sortBy, button.dataset.sortDirection);
+        button.classList.add("selected")
+    button.dataset.sortDirection = albumList.sortDir
+  }))
+
+
+
+
+
+  document.querySelectorAll("[data-action='sort-track']").forEach(button => button.addEventListener("click", () => {
+
+    document.querySelector("[data-action=sort-track].selected")?.classList.remove("selected");
+
+    trackList.sort(button.dataset.sortBy, button.dataset.sortDirection);
+    button.classList.add("selected")
+    button.dataset.sortDirection = trackList.sortDir
+  }))
+
 }
 
 
