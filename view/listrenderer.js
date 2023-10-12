@@ -13,7 +13,10 @@ class ListRenderer{
     render() {
         this.clear();
        
-        for (const itemRenderer of this.list) {
+        const filteredList = this.list.filter(item => this.filterProperty === "*" || item.item[this.filterProperty] == this.filterValue);
+
+
+        for (const itemRenderer of filteredList) {
           const html = itemRenderer.render();
           this.container.insertAdjacentHTML("beforeend", html);
             
@@ -47,9 +50,6 @@ class ListRenderer{
             this.sortDir = "asc"
         }
         this.sortBy = sortBy;
-
-        console.log(`sorter efter ${this.sortBy} i retning af ${this.sortDir}`)
-
         // console.log(`sort list by ${sortBy} in direction ${sortDir}`)
 
         this.list.sort((a, b) => {
@@ -70,8 +70,10 @@ class ListRenderer{
 
             }
 
-        })
-            ;
+        });
+        
+        this.list.sort(sortFunction);
+
         this.render();
     }
 
@@ -83,14 +85,7 @@ class ListRenderer{
 
     filterList(filterProperty, filterValue) {
         this.filterProperty = filterProperty;
-        console.log(this.filterProperty)
-
-
         this.filterValue = filterValue;
-
-        console.log(this.filterValue)
-
-        this.clear();
         this.render();
 
 

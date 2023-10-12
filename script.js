@@ -185,7 +185,7 @@ async function selectAlbumForUpdate(album) {
 }
 
 async function selectTrackForUpdate(track) {
-  updateTrackDialog.setAlbum(track);
+  updateTrackDialog.setTrack(track);
   updateTrackDialog.show();
 }
 
