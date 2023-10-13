@@ -11,26 +11,29 @@
   <body>
     <h1>MusicBase</h1>
 <main>
-    <form id="search-artist-form">
-      <label for="searchArtistInput">
-        <input type="text" name="searchArtistInput" id="searchArtistInput"
-      /></label>
-      <button>Search artist</button>
-    </form>
 
-    <form id="search-album-form">
-      <label for="searchAlbumInput">
-        <input type="text" name="searchAlbumInput" id="searchAlbumInput"
-      /></label>
-      <button>Search album</button>
-    </form>
+  <p>
+  Filter:
+    <select id="selectFilter"">
+      <option data-action="filter" value="All">All</option>
+      <option data-action="filter" value="genres:Pop">Pop</option>
+      <option data-action="filter" value="genres:Folk">Folk</option>
+      <option data-action="filter" value="genres:Rock">Rock</option> 
+      <option data-action="filter" value="genres:Jazz">Jazz</option>
 
-    <form id="search-track-form">
-      <label for="searchTrackInput">
-        <input type="text" name="searchTrackInput" id="searchTrackInput"
-      /></label>
-      <button>Search track</button>
-    </form>
+
+
+    </select>
+  </p>
+
+
+
+
+
+      <search >
+      <label for="searchArtistInput">Search<input type="text" name="searchInput" id="searchInput"/></label>
+      </search>
+ 
 
     <button data-action="create" id="btn-create-track"> Create Track</button>
     <button data-action="create" id="btn-create-artist"> Create Artist</button>
@@ -52,15 +55,15 @@
     <table id="artist-list" class="hide">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Website</th>
-          <th>Birthday</th>
-           <th>Active Since</th>
-          <th>Labels</th>
-          <th>Genres</th>
-          <th>Button</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="name">Name</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="description">Description</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="imgae">Image</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="website">Website</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="birthday">Birthday</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="activesince">Active Since</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="labels">Labels</th>
+          <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="genres">Genres</th>
+          <th >Button</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -69,8 +72,8 @@
     <table id="album-list" class="hide">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Image</th>
+          <th data-action="sort-album" data-sort-direction ="asc" data-sort-by="name">Name</th>
+          <th data-action="sort-album" data-sort-direction ="asc" data-sort-by="name">Image</th>
          
         </tr>
       </thead>
@@ -81,8 +84,8 @@
     <table id="track-list" class="hide">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Duration</th>
+          <th data-action="sort-track" data-sort-direction ="asc" data-sort-by="name">Name</th>
+          <th data-action="sort-track" data-sort-direction ="asc" data-sort-by="length">Duration</th>
                 
         </tr>
       </thead>
