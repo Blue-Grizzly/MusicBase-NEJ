@@ -1,18 +1,18 @@
 import { ListRenderer } from "./view/listrenderer.js";
-import { ArtistRenderer } from "./view/artistrenderer.js";
-import { TrackRenderer } from "./view/trackrenderer.js";
-import { AlbumRenderer } from "./view/albumrenderer.js";
+import { ArtistRenderer } from "./view/artist/artistrenderer.js";
+import { TrackRenderer } from "./view/track/trackrenderer.js";
+import { AlbumRenderer } from "./view/album/albumrenderer.js";
 import * as REST from "./rest-service.js";
 import { initTabs } from "./view/tabs.js";
-import TrackCreateDialog from "./view/TrackCreateDialog.js";
-import ArtistCreateDialog from "./view/artistCreateDialog.js";
-import AlbumCreateDialog from "./view/albumCreateDialog.js";
-import AlbumUpdateDialog from "./view/albumUpdateDialog.js";
-import AlbumDeleteDialog from "./view/albumDeleteDialog.js";
-import ArtistDeleteDialog from "./view/artistDeleteDialog.js";
-import ArtistUpdateDialog from "./view/artistUpdateDialog.js";
-import TrackUpdateDialog from "./view/trackUpdateDialog.js";
-import TrackDeleteDialog from "./view/trackDeleteDialog.js";
+import TrackCreateDialog from "./view/track/TrackCreateDialog.js";
+import ArtistCreateDialog from "./view/artist/artistCreateDialog.js";
+import AlbumCreateDialog from "./view/album/albumCreateDialog.js";
+import AlbumUpdateDialog from "./view/album/albumUpdateDialog.js";
+import AlbumDeleteDialog from "./view/album/albumDeleteDialog.js";
+import ArtistDeleteDialog from "./view/artist/artistDeleteDialog.js";
+import ArtistUpdateDialog from "./view/artist/artistUpdateDialog.js";
+import TrackUpdateDialog from "./view/track/trackUpdateDialog.js";
+import TrackDeleteDialog from "./view/track/trackDeleteDialog.js";
 
 
 

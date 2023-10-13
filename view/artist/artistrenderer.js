@@ -1,5 +1,5 @@
-import ItemRenderer from "./itemRenderer.js";
-import * as controller from "../script.js"
+import ItemRenderer from "../itemRenderer.js";
+import * as controller from "../../script.js"
 
 class ArtistRenderer extends ItemRenderer {
 

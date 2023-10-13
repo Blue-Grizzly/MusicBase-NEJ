@@ -1,6 +1,6 @@
-import Dialog from "./dialog.js";
-import Track from "../model/track.js";
-import * as controller from "../script.js";
+import Dialog from "../dialog.js";
+import Track from "../../model/track.js";
+import * as controller from "../../script.js";
 
 export default class TrackUpdateDialog extends Dialog {
   

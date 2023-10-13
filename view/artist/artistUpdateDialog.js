@@ -1,6 +1,6 @@
-import Dialog from "./dialog.js";
-import Aritst from "../model/artist.js";
-import * as controller from "../script.js";
+import Dialog from "../dialog.js";
+import Aritst from "../../model/artist.js";
+import * as controller from "../../script.js";
 
 export default class ArtistUpdateDialog extends Dialog {
   
