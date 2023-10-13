@@ -9,11 +9,9 @@ class TrackRenderer extends ItemRenderer {
         const html = /*html */`
     <td>${track.name}</td>
     <td>${track.length}</td>
-    <td > <div data-action="update" class="tooltip">♻️ <span class="tooltiptext">Update</span></div> 
-             <div data-action="delete" class="tooltip" >🗑️ <span class="tooltiptext">Delete</span></div> </td>  
-          
-        
-        </td>
+    <td > <div><div data-action="update" class="tooltip">♻️ <span class="tooltiptext">Update</span></div> 
+    <div data-action="delete" class="tooltip" >🗑️ <span class="tooltiptext">Delete</span></div> </div>
+    </td>  
     `;
 
         return html

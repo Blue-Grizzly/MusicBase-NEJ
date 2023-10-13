@@ -21,7 +21,7 @@ export default class AlbumCreateDialog extends Dialog {
                 <label for="trackname" >Track Name:</label><input type="text" id="trackname" name="trackname" placeholder="Track name">
                 <label for="trackduration">Track duration: </label> <input type="text" id="trackduration" name="trackduration" placeholder="Track duration">
                 <div id="btn-add-track" class="tooltip">Add track to album ➕ <span class="tooltiptext">Add Track</span></div>
-        <br><br>
+        <br><br><br>
 
 
                 <label for="artistname" >Artist Name:</label><input type="text" id="artistname" name="artistname" placeholder="The artist's name">

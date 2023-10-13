@@ -4,45 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>MusicBase</title>
   </head>
 
   
   <body>
-    <h1>MusicBase</h1>
-<main>
+    <main>
+      <header>
+      <h1>MusicBase</h1>
+        <section id="searchbar">
 
-  <p>
-  Filter:
-    <select id="selectFilter"">
-      <option data-action="filter" value="All">All</option>
-      <option data-action="filter" value="genres:Pop">Pop</option>
-      <option data-action="filter" value="genres:Folk">Folk</option>
-      <option data-action="filter" value="genres:Rock">Rock</option> 
-      <option data-action="filter" value="genres:Jazz">Jazz</option>
-
-
-
-    </select>
-  </p>
+  <select id="selectFilter">
+    <option data-action="filter" value="All" selected>Filter All</option>
+    <option data-action="filter" value="genres:Pop">Pop</option>
+    <option data-action="filter" value="genres:Folk">Folk</option>
+    <option data-action="filter" value="genres:Rock">Rock</option> 
+    <option data-action="filter" value="genres:Jazz">Jazz</option>
 
 
 
+  </select>
 
 
-      <search >
-      <label for="searchArtistInput">Search<input type="text" name="searchInput" id="searchInput"/></label>
-      </search>
- 
+  <input type="text" name="searchInput" id="searchInput" placeholder="Search"/>
+    </section>
 
+ <section id="toolbar">
     <button data-action="create" id="btn-create-track"> Create Track</button>
     <button data-action="create" id="btn-create-artist"> Create Artist</button>
     <button data-action="create" id="btn-create-album"> Create Album</button>
-    
+  </section>
 
-    <!-- <ul id="artist-list"></ul>
-    <ul id="album-list"></ul>
-    <ul id="track-list"></ul> -->
+</header>
+
 
     <h1>Artists, Albums and Tracks</h1>
 
@@ -63,18 +57,18 @@
           <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="activesince">Active Since</th>
           <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="labels">Labels</th>
           <th data-action="sort-artist" data-sort-direction ="asc" data-sort-by="genres">Genres</th>
-          <th >Button</th>
+          <th >Options</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-</div>
     <table id="album-list" class="hide">
       <thead>
         <tr>
           <th data-action="sort-album" data-sort-direction ="asc" data-sort-by="name">Name</th>
           <th data-action="sort-album" data-sort-direction ="asc" data-sort-by="name">Image</th>
-         
+          <th >Options</th>
+
         </tr>
       </thead>
       <tbody></tbody>
@@ -86,11 +80,16 @@
         <tr>
           <th data-action="sort-track" data-sort-direction ="asc" data-sort-by="name">Name</th>
           <th data-action="sort-track" data-sort-direction ="asc" data-sort-by="length">Duration</th>
-                
+          <th >Options</th>
+  
         </tr>
       </thead>
       <tbody></tbody>
     </table>
+
+
+</div>
+
 
   </div>
     <script src="script.js" type="module"></script>

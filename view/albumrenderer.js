@@ -7,11 +7,9 @@ class AlbumRenderer extends ItemRenderer {
         const html = /*html */`
             <td>${album.name}</td>
             <td>${album.image}</td>
-            <td > <div data-action="update" class="tooltip">♻️ <span class="tooltiptext">Update</span></div> 
-             <div data-action="delete" class="tooltip" >🗑️ <span class="tooltiptext">Delete</span></div> </td>  
-          
-        
-        </td>           
+            <td > <div><div data-action="update" class="tooltip">♻️ <span class="tooltiptext">Update</span></div> 
+            <div data-action="delete" class="tooltip" >🗑️ <span class="tooltiptext">Delete</span></div> </div>
+           </td>            
             `;
 
 

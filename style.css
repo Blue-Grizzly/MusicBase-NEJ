@@ -1,11 +1,7 @@
-body {
-  background-color: #555;
-  color: #ddf;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 #tabs {
   max-width: 60vw;
+  margin-top: 15vh;
+  margin-left: 2vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -13,12 +9,13 @@ body {
 #tabs h2 {
   margin: 0;
   padding: .5em;
-  background-color: #444;
+  background-color: var(--mid);
   cursor: pointer;
 }
 
 #tabs h2.selected {
-  background-color: #666;
+  background-color: var(--dark);
+  color: var(--accents);
   border: 1px solid black;
   border-bottom: none;
 }
@@ -29,9 +26,7 @@ body {
 
 #tabs table {
   padding: 1em;
-  background-color: #666;
   grid-area: 2 / 1 / 2 / 3 ;
-  border: 1px solid black;
   border-top: none;
 }
 
@@ -39,24 +34,13 @@ body {
   display: none;
 }
 
-/* invididual styling of tables ... adjust to taste! */
-
-#members tr td:nth-child(3) {
-  text-align: right;
-}
-
-#members tr td:nth-child(4) {
-  text-align: center;
-}
-
-
-
 
 /*--------------------------TOoLTIP-------------*/
 
 /* Tooltip container */
 .tooltip {
   position: relative;
+  font-size: x-large;
  
 }
 
@@ -98,4 +82,159 @@ body {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+
+
+
+button:hover{
+  box-shadow: 0 0 20px 0 var(--accents);
+}
+
+button {
+  font-weight: 300;
+  font-size: 1em;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  color: var(--text-black);
+  background-color: var(--light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  width: 100%;
+  max-width: 380px;
+}
+
+/* input + form */
+
+
+form {
+  background-color: var(--dark);
+  padding: 1em 1em 2em;
+  text-align: center;
+}
+
+
+input, select {
+  margin: 1em auto;
+  width: 100%;
+  max-width: 350px;
+  padding: 1em;
+  border: 2px solid var(--dark);
+  display: block;
+  background: var(--white);
+}
+
+/* dialog */
+
+dialog{
+  width: 50%;
+  background: var(--light)
+  
+}
+
+dialog form{
+  background-color: var(--mid);
+}
+
+dialog::backdrop{
+  backdrop-filter: blur(1px) grayscale(200%);
+
+}
+
+
+/* ---------- root variables ---------- */
+:root {
+  --dark:#1C262D;
+  --mid: #83b4d3;
+  --light: #F4F4F4;  
+  --accents: #0072E9;
+  --text-black: #12191D;
+  --white: #F4F4F4;
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- general styling ---------- */
+html {
+  color: var(--text-black);
+  font-family: var(--font);
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+
+a {
+  cursor: pointer;
+  color: var(--white);
+}
+
+/* ---------- topbar styling ---------- */
+header {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 13.5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: grid;
+}
+
+/* ---------- page styling ---------- */
+body {
+  background: var(--mid);
+  padding: 108px 0 0;
+}
+
+
+
+tr:nth-child(even){background-color: var(--light); }
+tr:hover {background-color: var(--accents);}
+thead{background-color: var(--light)}
+
+td{
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 20vw;
+  min-width: 7vw;
+}
+
+td div{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+td:hover{
+  max-width: fit-content;
+  overflow: visible;
+}
+
+#toolbar{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#searchbar{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
