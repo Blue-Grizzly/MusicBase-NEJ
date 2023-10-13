@@ -52,26 +52,9 @@ class ListRenderer{
         this.sortBy = sortBy;
         // console.log(`sort list by ${sortBy} in direction ${sortDir}`)
 
-        this.list.sort((a, b) => {
-
-            if (this.sortDir === "asc") {
-                if (a[this.sortBy] > b[this.sortBy]) {
-                    return 1
-                } else {
-                    return -1
-                }
-            } else {
-
-                if (a[this.sortBy] < b[this.sortBy]) {
-                    return 1
-                } else {
-                    return -1
-                }
-
-            }
-
-        });
         
+
+
         this.list.sort(sortFunction);
 
         this.render();
