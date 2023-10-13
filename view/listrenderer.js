@@ -13,7 +13,23 @@ class ListRenderer{
     render() {
         this.clear();
        
-        for (const itemRenderer of this.list) {
+        const filteredList = this.list.filter(
+            itemRenderer => this.filterProperty === "All" || itemRenderer.item[this.filterProperty] == this.filterValue||
+        itemRenderer.item[this.filterProperty].includes(this.filterValue)) 
+        
+
+           
+        if (this.searchValue == undefined || this.searchValue.length < 1 ){
+                this.searchedList =filteredList
+            }else {
+                this.searchedList = filteredList.filter(itemRenderer => itemRenderer.item.name.toLowerCase().includes(this.searchValue))
+           
+           // this.searchedList = filteredList.filter(itemRenderer => Object.values(itemRenderer).some(value => value.toString().toLowerCase().includes(this.searchValue)))
+
+            }
+
+
+        for (const itemRenderer of this.searchedList) {
           const html = itemRenderer.render();
           this.container.insertAdjacentHTML("beforeend", html);
             
@@ -31,47 +47,36 @@ class ListRenderer{
 
     sort(sortBy, sortDir) {
 
+        console.log(`sortBy ${sortBy}`)
+        console.log(`sortDir ${sortDir}`)
 
-        if (sortDir) {
-            this.sortDir = sortDir
-        } else if (sortBy === this.sortBy) {
-
-            // hvis this.sortDir var "asc så sæt til Desc eller omvendt"
-
-            if (this.sortDir === "asc") {
-                this.sortDir = "desc"
-            } else {
-                this.sortDir = "asc"
-            }
+        if (sortBy === this.sortBy) {
+            // Toggle sort direction, ignore what sortDir is given 
+            this.sortDir = this.sortDir === "asc" ? "desc" : "asc";
         } else {
-            this.sortDir = "asc"
-        }
-        this.sortBy = sortBy;
-
-        console.log(`sorter efter ${this.sortBy} i retning af ${this.sortDir}`)
-
-        // console.log(`sort list by ${sortBy} in direction ${sortDir}`)
-
-        this.list.sort((a, b) => {
-
-            if (this.sortDir === "asc") {
-                if (a[this.sortBy] > b[this.sortBy]) {
-                    return 1
-                } else {
-                    return -1
-                }
+            if (sortDir) {
+                this.sortDir = sortDir;
             } else {
-
-                if (a[this.sortBy] < b[this.sortBy]) {
-                    return 1
-                } else {
-                    return -1
-                }
-
+                this.sortDir = "asc";
             }
+        }
+            this.sortBy = sortBy;
+           
+     
 
-        })
-            ;
+        // make direction into a number, to make it easier to flip
+        const dir = this.sortDir === "asc" ? 1 : -1;
+
+        // NOTE: sortFunctions MUST be arrow-functions, to keep the reference to this!
+        const valueSortFunction = (a, b) => a.item[this.sortBy] > b.item[this.sortBy] ? dir : -dir;
+        const stringSortFunction = (a, b) => a.item[this.sortBy]?.localeCompare(b.item[this.sortBy]) * dir;
+
+        // select between sortFunctions, depending on the type on the sortBy property in the first item in the list
+        const sortFunction = typeof this.list[0].item[this.sortBy] === "string" ? stringSortFunction : valueSortFunction;
+
+        console.log(this.list)
+        this.list.sort(sortFunction);
+
         this.render();
     }
 
@@ -83,18 +88,18 @@ class ListRenderer{
 
     filterList(filterProperty, filterValue) {
         this.filterProperty = filterProperty;
-        console.log(this.filterProperty)
-
-
         this.filterValue = filterValue;
-
-        console.log(this.filterValue)
-
-        this.clear();
         this.render();
 
 
     }
+
+    search(searchValue){
+        this.searchValue = searchValue.trim().toLowerCase();
+        this.render()
+    }
+
+
 }
 
 
