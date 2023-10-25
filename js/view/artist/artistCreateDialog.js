@@ -35,7 +35,6 @@ export default class ArtistCreateDialog extends Dialog {
             activeSince: form.activeSince.value,
             labels: form.labels.value,
             genres: form.genres.value,
-            albums: form.albums.value
         });
 
         form.reset();
