@@ -103,6 +103,12 @@ async function initApp() {
   trackList = new ListRenderer(await REST.getAllTracks(), "#track-list tbody", TrackRenderer)
   trackList.render();
 
+  /*
+  This is destructuring assignment in JavaScript. It allows you to extract values from arrays or properties 
+  from objects into distinct variables. In this case, it's extracting the first and second elements of the array 
+  
+  (resulting from the split operation) into the variables prop and val respectively.
+  */
 
   document.querySelector("#selectFilter").addEventListener("change",
     () => {

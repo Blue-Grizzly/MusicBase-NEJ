@@ -33,7 +33,7 @@ export default class ArtistCreateDialog extends Dialog {
             website: form.website.value,
             birthday: form.birthday.value,
             activeSince: form.activeSince.value,
-            labels: form.label.value,
+            labels: form.labels.value,
             genres: form.genres.value,
             albums: form.albums.value
         });
